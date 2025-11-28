@@ -1,0 +1,27 @@
+stages:
+  prepare:
+    cmd: python3.12 src/prepare.py
+    deps:
+    - data/raw/data.csv
+    - src/prepare.py
+    params:
+    - data.processed_dir
+    outs:
+    - data/processed/train.csv
+    - data/processed/test.csv
+
+  train:
+    cmd: python3.12 src/train.py
+    deps:
+    - data/processed/train.csv
+    - data/processed/test.csv
+    - src/train.py
+    params:
+    - data.processed_dir
+    - data.target_col
+    - model.C
+    - model.max_iter
+    - mlflow.tracking_uri
+    - mlflow.experiment_name
+    outs:
+    - model.pkl
