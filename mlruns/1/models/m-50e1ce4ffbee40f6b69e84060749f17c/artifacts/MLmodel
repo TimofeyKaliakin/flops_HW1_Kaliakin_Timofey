@@ -1,0 +1,22 @@
+artifact_path: "/Users/tim/Yandex.Disk.localized/\u041C\u0424\u0422\u0418/MLops/flops_HW1_Kaliakin_Timofey/mlruns/1/models/m-50e1ce4ffbee40f6b69e84060749f17c/artifacts"
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+mlflow_version: 3.6.0
+model_id: m-50e1ce4ffbee40f6b69e84060749f17c
+model_size_bytes: 1462
+model_uuid: m-50e1ce4ffbee40f6b69e84060749f17c
+prompts: null
+run_id: cd55cd1e3a274582bf402505cf8d2f12
+utc_time_created: '2025-11-28 15:23:13.111971'
