@@ -1,0 +1,53 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python3.12 src/prepare.py
+    deps:
+    - path: data/raw/data.csv
+      hash: md5
+      md5: ac2c33e860a72a79bbc3437ca80c355c
+      size: 2776
+    - path: src/prepare.py
+      hash: md5
+      md5: ab08aa941f9b5232244bd2ad29acfa00
+      size: 909
+    params:
+      params.yaml:
+        data.processed_dir: data/processed
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a77f39340990ca49b8cb297311660e3f
+      size: 886
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 2cefc85e2fdab3e38240314203a81d96
+      size: 1948
+  train:
+    cmd: python3.12 src/train.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: a77f39340990ca49b8cb297311660e3f
+      size: 886
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 2cefc85e2fdab3e38240314203a81d96
+      size: 1948
+    - path: src/train.py
+      hash: md5
+      md5: b4402ffd2df3f17867a20f8050c102ca
+      size: 2066
+    params:
+      params.yaml:
+        data.processed_dir: data/processed
+        data.target_col: label
+        mlflow.experiment_name: iris-classification
+        mlflow.tracking_uri: sqlite:///mlflow.db
+        model.C: 1.0
+        model.max_iter: 200
+    outs:
+    - path: model.pkl
+      hash: md5
+      md5: a824fffb269ddef21b78785294e7df98
+      size: 1462
