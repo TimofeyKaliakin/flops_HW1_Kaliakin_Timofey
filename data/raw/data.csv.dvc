@@ -1,3 +1,10 @@
+md5: 55bca0994bd695a9da6484bdd2cb2848
+frozen: true
+deps:
+- path: raw/data.csv
+  repo:
+    url: https://github.com/TimofeyKaliakin/data_iris.git
+    rev_lock: 5a8921172981d85c90445d101303ddaf6c9ef225
 outs:
 - md5: ac2c33e860a72a79bbc3437ca80c355c
   size: 2776
